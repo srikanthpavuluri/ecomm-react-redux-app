@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+
+.layout-button {
+  display: inline-block;
+  margin-left: 10px;
+  background: transparent;
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid;
+  color: grey;
+}
+
+.layout-button i {
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.layout-button i:nth-child(1) {
+  margin: 0;
+}
