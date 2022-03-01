@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import LeftSide  from '../../components/LeftSide';
 import ProductItem from './productItem';
+import ProductListData from './sampleData';
 
 const ProductList = () => {
     
     const color = {color: '#1E90FF'}; //Blue
 
     const [columnCount, setColumnCount] = useState(3);
-    const layoutClassName = `row row-cols-${columnCount}`;
+    const layoutClassName = `row row-cols-${columnCount}`; // row row-cols-3 | row row-cols-4
 
     const productsData = [{
         id: 12,
@@ -35,6 +36,9 @@ const ProductList = () => {
         name: "OnePlus",
     }, ];
 
+    console.log( ProductListData.phones, 'ProductListData');
+    const {phones}  = ProductListData;
+
     return (
         <div className='container' style={{ 
             marginTop: '100px',
@@ -43,7 +47,8 @@ const ProductList = () => {
         }}>
             <LeftSide />    {/* 25% * */}
             <div style={{width:'75%'}}>   {/* 75 */}
-                <div className='alert alert-secondary' style={{ display:'flex', justifyContent:"flex-end"}}>
+                <div className='alert alert-secondary' 
+                    style={{ display:'flex', justifyContent:"flex-end"}}>
                     <div>
                         <span>Change Layout:</span>
                         <span className='layout-button'
@@ -65,7 +70,7 @@ const ProductList = () => {
                 </div>
                 <div>
                     <div className={layoutClassName}>
-                        {productsData.map(product => <ProductItem data={product} />)}
+                        {phones.map(item => <ProductItem product={item} />)}
                     </div>
                 </div>
             </div>
