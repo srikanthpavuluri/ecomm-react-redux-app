@@ -1,56 +1,38 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import ProductListData from '../../modules/productList/sampleData';
 
-
-const Brands = () => {
+const Brands = (props) => {
     const [selectedBrands, setSelectedBrands] = useState([]);
-    
-    const brands = [{
-        name: "Apple",
-        key: "apple",
-        id: "1"
-    }, {
-        name: "Lenovo",
-        key: "lenovo",
-        id: "2"
-    }, {
-        name: "Dell",
-        key: "dell",
-        id: "3"
-    }, {
-        name: "Samsung",
-        key: "samsung",
-        id: "4"
-    }, {
-        name: "Acer",
-        key: "acer",
-        id: "5"
-    }];
+    const [allBrands, setAllBrands] = useState(ProductListData.brands);
+
+    useEffect(() => {
+        // callback to the parent components via props
+        props.selectedBrands(selectedBrands);
+    }, [selectedBrands]);
 
     const handleChange = (e) => {
         console.log(e, 'e');
+        const previousSelectedBrands = selectedBrands;
         // if item is not added to list
         if (e.target.checked) {
-            if (!selectedBrands.includes(e.target.name)) {
-                const previousSelectedBrands = selectedBrands;
+            if (!selectedBrands.includes(e.target.value)) {
                 // [1,2,3]
                 // ...[1, 2, 3] => 1,2,3 => 1,2,3,4 => [1,2,3,4]
                 // [1,2,3,4]
-                setSelectedBrands([...previousSelectedBrands, e.target.value]);
+                setSelectedBrands([...previousSelectedBrands, parseInt(e.target.value)]);
             }
-        }
-        // if item is already added to the list
-        if (!e.target.checked) {
-            if (selectedBrands.includes(e.target.name)) {
-                selectedBrands.filter(selectedBrand => 
-                    selectedBrand !== e.target.name
+        } else if (!e.target.checked) {
+            // if item is already added to the list 
+            if (selectedBrands.includes(parseInt(e.target.value))) {
+                const updatedBrands = selectedBrands.filter(
+                    selectedBrand => selectedBrand !== parseInt(e.target.value)
                 );
+                setSelectedBrands(updatedBrands);
             }
         }
     };
 
-
-    console.log(selectedBrands, 'selectedBrands');
-
+    
     return (
         <div className='mb-5'>
             <div className='card'>
@@ -58,9 +40,9 @@ const Brands = () => {
                     Brands
                 </div>
                 <ul className='list-group list-group-list'>
-                    {brands.map((brand, i) => (
-                        <li className='list-group-item' key={brand.key}>
-                            <input type="checkbox" className='form-check-input' value={brand.name} onChange={(e) => handleChange(e)}/>
+                    {allBrands.map((brand, i) => (
+                        <li className='list-group-item' key={brand.id}>
+                            <input type="checkbox" className='form-check-input' value={brand.id} onChange={(e) => handleChange(e)}/>
                             <label className='form-check-label' style={{display: 'inline-block', marginLeft: '10px'}}>{brand.name}</label> 
                         </li>
                     ))}

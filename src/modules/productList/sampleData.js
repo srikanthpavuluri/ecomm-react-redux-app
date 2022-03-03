@@ -393,31 +393,31 @@ const  ProductListData = {
     "brands":[
         {
             "id":1,
-            "name":"apple"
+            "name":"Apple"
         },
         {
             "id":2,
-            "name":"huawei"
+            "name":"Huawei"
         },
         {
             "id":3,
-            "name":"meizu"
+            "name":"Meizu"
         },
         {
             "id":4,
-            "name":"samsung"
+            "name":"Samsung"
         },
         {
             "id":5,
-            "name":"vestel"
+            "name":"Vestel"
         },
         {
             "id":6,
-            "name":"xiaomi"
+            "name":"Xiaomi"
         },
         {
             "id":7,
-            "name":"asus"
+            "name":"Asus"
         }
     ]
 };

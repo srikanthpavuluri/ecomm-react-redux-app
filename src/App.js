@@ -5,12 +5,22 @@ import ProductList from './modules/productList';
 import ProductDetails from './modules/productDetails';
 import './App.css';
 
+
+// localhost:3000/product/1
+
 function App() {
-  return (<div>
-    <Header />
-    {/* <ProductList /> */}
-    <ProductDetails />
-  </div>);
+  return (
+    <div>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/" exact component={ProductList} />
+          <Route path="/product/:id" exact component={ProductDetails} />
+          {/* TODO: ADD CART ROUTE*/}
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

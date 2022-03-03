@@ -4,40 +4,23 @@ import ProductItem from './productItem';
 import ProductListData from './sampleData';
 
 const ProductList = () => {
-    
+    const {phones: products}  = ProductListData;
+    const [fitleredProducts, setFitleredProducts] = useState(products)
     const color = {color: '#1E90FF'}; //Blue
 
     const [columnCount, setColumnCount] = useState(3);
     const layoutClassName = `row row-cols-${columnCount}`; // row row-cols-3 | row row-cols-4
 
-    const productsData = [{
-        id: 12,
-        name: "iPhone",
-    }, {
-        id: 123,
-        name: "Samsung",
-    },  {
-        id: 124,
-        name: "OnePlus",
-    }, {
-        id: 12,
-        name: "iPhone",
-    },  {
-        id: 124,
-        name: "OnePlus",
-    }, {
-        id: 12,
-        name: "iPhone",
-    }, {
-        id: 123,
-        name: "Samsung",
-    },  {
-        id: 124,
-        name: "OnePlus",
-    }, ];
+    const filterProductsBySelectedBrands = (selectedBrands) => {
+        if (selectedBrands.length > 0) {
+            const updatedProducts = products.filter(product => selectedBrands.includes(product.brandId));
+            setFitleredProducts(updatedProducts);
+        } else {
+            setFitleredProducts(products);
+        };
+    };
 
-    console.log( ProductListData.phones, 'ProductListData');
-    const {phones}  = ProductListData;
+    console.log(fitleredProducts, 'fitleredProducts');
 
     return (
         <div className='container' style={{ 
@@ -45,7 +28,11 @@ const ProductList = () => {
             display: 'flex',
             justifyContent: 'space-between'
         }}>
-            <LeftSide />    {/* 25% * */}
+            <LeftSide 
+                updateSelectedBrands={
+                    (selectedBrands) => filterProductsBySelectedBrands(selectedBrands)
+                }
+            />    {/* 25% * */}
             <div style={{width:'75%'}}>   {/* 75 */}
                 <div className='alert alert-secondary' 
                     style={{ display:'flex', justifyContent:"flex-end"}}>
@@ -70,7 +57,7 @@ const ProductList = () => {
                 </div>
                 <div>
                     <div className={layoutClassName}>
-                        {phones.map(item => <ProductItem product={item} />)}
+                        {fitleredProducts.map(item => <ProductItem product={item} />)}
                     </div>
                 </div>
             </div>
