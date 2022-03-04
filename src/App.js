@@ -5,8 +5,10 @@ import ProductList from './modules/productList';
 import ProductDetails from './modules/productDetails';
 import './App.css';
 
-
+// URLs
 // localhost:3000/product/1
+// localhost:3000/brand/1/product/12323
+// localhost:3000/brand/:brandId/product/:productId
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={ProductList} />
-          <Route path="/product/:id" exact component={ProductDetails} />
+          {/* <Route path="/product/:id" component={ProductDetails} /> */}
+          <Route path="/brand/:brandId/product/:productId" component={ProductDetails} />
           {/* TODO: ADD CART ROUTE*/}
         </Switch>
       </Router>

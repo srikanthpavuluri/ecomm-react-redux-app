@@ -24,7 +24,12 @@ const  ProductListData = {
         {
             "title": "Huawei Mate 20 Lite 64 GB (Huawei Türkiye Garantili)",
             "category": "phone",
-            "images": ["https://productimages.hepsiburada.net/s/21/280-413/9933217792050.jpg?v1", "https://productimages.hepsiburada.net/s/21/280-413/9933217628210.jpg?v1", "https://productimages.hepsiburada.net/s/21/280-413/9933217660978.jpg?v1", "https://productimages.hepsiburada.net/s/21/280-413/9933217693746.jpg?v1"],
+            "images": [
+                "https://productimages.hepsiburada.net/s/21/280-413/9933217792050.jpg?v1", 
+                "https://productimages.hepsiburada.net/s/21/280-413/9933217628210.jpg?v1", 
+                "https://productimages.hepsiburada.net/s/21/280-413/9933217660978.jpg?v1", 
+                "https://productimages.hepsiburada.net/s/21/280-413/9933217693746.jpg?v1"
+            ],
             "brandId": 2,
             "price": 1823.6625483451157,
             "cpu": "1.3GHz Apple A6",
