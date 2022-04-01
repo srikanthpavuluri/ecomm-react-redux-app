@@ -20,6 +20,13 @@ export const productReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: true,
             };
+        case FETCH_PRODUCT_SUCCESS:
+            console.log(action, 'action')
+            return {
+                ...state,
+                isLoading: false,
+                products: action.data,
+            };
         default: return state;
     }
 };

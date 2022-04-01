@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import LeftSide  from '../../components/LeftSide';
 import ProductItem from './productItem';
 import ProductListData from './sampleData';
+import { fetchProducts } from '../../redux/actions/productActions';
+
+const color = {color: '#1E90FF'}; //Blue
 
 const ProductList = () => {
-    const {phones: products}  = ProductListData;
+    //const {phones: products}  = ProductListData;
+    const products = useSelector((state) => state.productsData.products);
+    const dispatch = useDispatch();
     const [fitleredProducts, setFitleredProducts] = useState(products)
-    const color = {color: '#1E90FF'}; //Blue
-
+    
     const [columnCount, setColumnCount] = useState(3);
     const layoutClassName = `row row-cols-${columnCount}`; // row row-cols-3 | row row-cols-4
+
+    useEffect(() => {
+        dispatch(fetchProducts);
+    }, []);
 
     const filterProductsBySelectedBrands = (selectedBrands) => {
         if (selectedBrands.length > 0) {
@@ -66,3 +75,7 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
+
+// ProductList is mounted we should request an API call to get the products.
+

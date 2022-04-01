@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/store';
+import store from './redux/store';  // store configuration
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
+    <Provider store={store}> {/* Redux is place above the react app */}
+      <App /> {/* Actual react app starts here */}
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
