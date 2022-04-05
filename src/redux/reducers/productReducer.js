@@ -19,6 +19,8 @@ export const productReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
+                error: false,
+                errorMessage: ''
             };
         case FETCH_PRODUCT_SUCCESS:
             console.log(action, 'action')
@@ -26,7 +28,18 @@ export const productReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 products: action.data,
+                error: false,
+                errorMessage: ''
             };
+        case FETCH_PRODUCT_ERROR:
+                console.log(action, 'action')
+                return {
+                    ...state,
+                    isLoading: false,
+                    products: [],
+                    error: true,
+                    errorMessage: 'Failed to Products'
+                };
         default: return state;
     }
 };

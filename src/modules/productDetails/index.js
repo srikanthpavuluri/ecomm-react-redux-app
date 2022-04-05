@@ -4,11 +4,7 @@ import {useParams} from 'react-router-dom';
 const ProductDetails = (props) => {
     const { key, product } = props.location
     const [activeImage, setActiveImage] = useState(product.images[0]);
-
-     console.log(props.location, 'location');
      const {brandId, productId} = useParams();
-     console.log(brandId, 'brandId')
-     console.log(productId, 'productId')
 
     const updateMainProductImage = (e) => {
       //  console.log(e.target.src);

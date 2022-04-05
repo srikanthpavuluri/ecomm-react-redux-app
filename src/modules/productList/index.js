@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import LeftSide  from '../../components/LeftSide';
 import ProductItem from './productItem';
-import ProductListData from './sampleData';
 import { fetchProducts } from '../../redux/actions/productActions';
 
 const color = {color: '#1E90FF'}; //Blue
 
 const ProductList = () => {
-    //const {phones: products}  = ProductListData;
     const products = useSelector((state) => state.productsData.products);
     const dispatch = useDispatch();
+
     const [fitleredProducts, setFitleredProducts] = useState(products)
     
     const [columnCount, setColumnCount] = useState(3);

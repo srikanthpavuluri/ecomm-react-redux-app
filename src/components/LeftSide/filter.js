@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import ProductListData from '../../modules/productList/sampleData';
 
 const Brands = (props) => {
     const [selectedBrands, setSelectedBrands] = useState([]);
-    const [allBrands, setAllBrands] = useState(ProductListData.brands);
+    const [allBrands, setAllBrands] = useState([]);
 
     useEffect(() => {
         // callback to the parent components via props
