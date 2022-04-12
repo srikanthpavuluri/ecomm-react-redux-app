@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../../redux/actions/cartActions';
 
 const ProductItem = (props) => {
+
+    // useDispatch -> to update to reducer state
+    // useSelector -> to access the reducer state.
+
+    const dispatch = useDispatch();
 
     const  {product} = props;
    
@@ -19,7 +26,8 @@ const ProductItem = (props) => {
                 {product.description}
             </p>
             <div style={{marginLeft: '50px'}}>
-                <button type="button" class="btn btn-primary">Add to Cart</button>
+                <button type="button" class="btn btn-primary" 
+                onClick={() => dispatch((dispatch) => addToCart(dispatch, product))}>Add to Cart</button>
             </div>
         </div>
     </div>);

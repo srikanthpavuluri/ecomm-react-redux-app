@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'; // async call - API
 import { productReducer } from './reducers/productReducer';
+import { cartReducer } from './reducers/cartReducer';
 
 // logger
 
@@ -8,7 +9,7 @@ import { productReducer } from './reducers/productReducer';
 const rootReducer = combineReducers({
     productsData: productReducer,
     // brands: brandReducer,
-    // carts: cartReducer,
+    cartData: cartReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

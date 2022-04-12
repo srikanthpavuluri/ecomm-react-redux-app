@@ -8,16 +8,23 @@ const color = {color: '#1E90FF'}; //Blue
 
 const ProductList = () => {
     const products = useSelector((state) => state.productsData.products);
+    const cartItems = useSelector((state) => state.cartData.items);
+    console.log(cartItems, 'cartItems');
     const dispatch = useDispatch();
 
-    const [fitleredProducts, setFitleredProducts] = useState(products)
+    const [fitleredProducts, setFitleredProducts] = useState(products); // excute for first time is mounted.
     
     const [columnCount, setColumnCount] = useState(3);
     const layoutClassName = `row row-cols-${columnCount}`; // row row-cols-3 | row row-cols-4
 
     useEffect(() => {
-        dispatch(fetchProducts);
+        dispatch(fetchProducts);    // API call is initiated once component is mounted .
     }, []);
+
+    useEffect(() => {
+        setFitleredProducts(products);   // code will execute when the change in dependency
+    }, [products]);
+
 
     const filterProductsBySelectedBrands = (selectedBrands) => {
         if (selectedBrands.length > 0) {
@@ -27,6 +34,8 @@ const ProductList = () => {
             setFitleredProducts(products);
         };
     };
+
+    console.log(products, 'products');
 
     console.log(fitleredProducts, 'fitleredProducts');
 

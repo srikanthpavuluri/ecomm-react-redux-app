@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import './header.css';
 
 // Functional Component
 const Header = () => {
+    const cartItems = useSelector((state) => state.cartData.items);
+   
     return (
         <div>
             <nav className="navbar fixed-top navbar-dark bg-secondary mb-5">
@@ -16,15 +19,15 @@ const Header = () => {
                         className="badge bg-container"
                         style={{
                             display: "inline-block",
-                            position: "absolute",
+                            position: "relative",
                             borderRadius: "50%",
                             width: "20px",
-                            fontSize: "10px",
+                            fontSize: "16px",
                             textAlign: "10px",
                             lineHeight: "12px"
                         }}
                     >
-                        10
+                        {cartItems.length}
                     </span>
                 </div>
             </nav>
