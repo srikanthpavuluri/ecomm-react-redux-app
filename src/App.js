@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom';
 import Header from './components/Header';
 import ProductList from './modules/productList';
 import ProductDetails from './modules/productDetails';
+import CartList from './modules/cart';
 import './App.css';
 
 // URLs
@@ -20,6 +21,8 @@ function App() {
           {/* <Route path="/product/:id" component={ProductDetails} /> */}
           <Route path="/brand/:brandId/product/:productId" component={ProductDetails} />
           {/* TODO: ADD CART ROUTE*/}
+          <Route path="/cart" exact component={CartList} />
+         
         </Switch>
       </Router>
     </div>

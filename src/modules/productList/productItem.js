@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../../redux/actions/cartActions';
+import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
 
 const ProductItem = (props) => {
 
@@ -11,7 +11,7 @@ const ProductItem = (props) => {
 
     const dispatch = useDispatch();
 
-    const  {product} = props;
+    const  {product, isAddedToCart} = props;
    
     return (<div className='col mt-5'>
         <div className='card p-2'>
@@ -26,8 +26,24 @@ const ProductItem = (props) => {
                 {product.description}
             </p>
             <div style={{marginLeft: '50px'}}>
-                <button type="button" class="btn btn-primary" 
-                onClick={() => dispatch((dispatch) => addToCart(dispatch, product))}>Add to Cart</button>
+               {isAddedToCart ?  (
+                   <button 
+                   type="button" 
+                   class="btn btn-primary" 
+                   onClick={() => dispatch((dispatch) => removeFromCart(dispatch, product))}
+               >
+                   Remove From Cart
+               </button>
+               ) : (
+                   <button 
+                    type="button" 
+                    class="btn btn-primary" 
+                    onClick={() => dispatch((dispatch) => addToCart(dispatch, product))}
+                    >
+                   Add to Cart
+                </button>
+                )
+               }
             </div>
         </div>
     </div>);

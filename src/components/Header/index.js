@@ -11,10 +11,12 @@ const Header = () => {
         <div>
             <nav className="navbar fixed-top navbar-dark bg-secondary mb-5">
                 <div className="container">
-                    {/* <Link className="navbar-brand" to="/"> */}
+                    <Link className="navbar-brand" to="/">
                        <div className="logo">E-comm</div>
-                    {/* </Link>    */}
-                    <i className="fas fa-shopping-cart"></i>
+                    </Link>    
+                    <Link to="/cart"> 
+                        <i className="fas fa-shopping-cart"></i>
+                    </Link>
                     <span
                         className="badge bg-container"
                         style={{

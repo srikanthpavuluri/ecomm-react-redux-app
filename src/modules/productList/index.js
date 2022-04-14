@@ -38,6 +38,11 @@ const ProductList = () => {
     console.log(products, 'products');
 
     console.log(fitleredProducts, 'fitleredProducts');
+    // 1 -> true; 0 -> false
+    const checkProductInCart = (productItem) => {
+        const cartItem = cartItems.filter(cartItem => cartItem.id === productItem.id);
+        return cartItem.length > 0 ? true : false;
+    };
 
     return (
         <div className='container' style={{ 
@@ -74,7 +79,10 @@ const ProductList = () => {
                 </div>
                 <div>
                     <div className={layoutClassName}>
-                        {fitleredProducts.map(item => <ProductItem product={item} />)}
+                        {fitleredProducts.map(productItem => {
+                            const isAddedToCart = checkProductInCart(productItem);
+                            return (<ProductItem product={productItem} isAddedToCart={isAddedToCart}/>)
+                        })}
                     </div>
                 </div>
             </div>

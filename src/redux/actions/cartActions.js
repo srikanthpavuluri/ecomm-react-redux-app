@@ -18,6 +18,17 @@ export const addToCart = (dispatch, product) => {
     
 };
 // deleteFromCart
+export const removeFromCart = (dispatch, product) => {
+    let items = JSON.parse(window.localStorage.getItem("cart")).items; // old list
+    items = items.filter(item => item.id !== product.id); // remove an product to the old list -> new list
+    
+    window.localStorage.clear();    // clear the old cart list in LS
+    
+    window.localStorage.setItem("cart", JSON.stringify( { items } )); // update the new cart list in LS
+    
+    dispatch({ type: DELETE_FROM_CART, data: items});
+    
+};
 
 // updateCartQty
 

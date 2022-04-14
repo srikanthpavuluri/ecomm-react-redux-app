@@ -23,7 +23,9 @@ export const cartReducer = (state = initialState, action) => {
                 items: action.data,
             }
         case DELETE_FROM_CART:
-            break;
+            return {
+                items: action.data,
+            };
         case UPDATE_QTY:
             break;
         case EMPTY_CART:
